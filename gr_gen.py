@@ -17,7 +17,7 @@ encoded_parts = chuncker.encode_file(file_path=input_file, parts=req_parts, red_
 
 # Save all encoded parts
 for i, part in enumerate(encoded_parts):
-    with open(os.path.join("encoded_parts", f"part_{i}.bin"), "wb") as f:
+    with open(os.path.join("out", f"part_{i}.bin"), "wb") as f:
         f.write(part)
 
 
@@ -27,18 +27,18 @@ for i, part in enumerate(encoded_parts):
 
 
 
-# QR_collection = []
+QR_collection = []
 
-# file_meta_data = file + "#" + hashlib.md5(open(file,'rb').read()).hexdigest()
-# # QR_collection.append(qrcode.make(file_meta_data, version=10, error_correction=qrcode.ERROR_CORRECT_H, border=4))
-# QR_collection.append(pyqrcode.create(file_meta_data, error='L', version=10, mode='binary'))
+file_meta_data = file + "#" + hashlib.md5(open(file,'rb').read()).hexdigest()
+# QR_collection.append(qrcode.make(file_meta_data, version=10, error_correction=qrcode.ERROR_CORRECT_H, border=4))
+QR_collection.append(pyqrcode.create(file_meta_data, error='L', version=10, mode='binary'))
 
-# for chunk in chuncks.Chuncker(filename=file):
-#     # QR_collection.append(qrcode.make(chunk, version=10, error_correction=qrcode.ERROR_CORRECT_H, border=4))
-#     QR_collection.append(pyqrcode.create(chunk, error='L', version=10, mode='binary', encoding='iso-8859-1'))
+for chunk in chuncks.Chuncker(filename=file):
+    # QR_collection.append(qrcode.make(chunk, version=10, error_correction=qrcode.ERROR_CORRECT_H, border=4))
+    QR_collection.append(pyqrcode.create(chunk, error='L', version=10, mode='binary', encoding='iso-8859-1'))
     
-# for index in range(len(QR_collection)):
-#     img=QR_collection[index]
-#     # img.save(f'QR/MyQRCode{index}.png')
-#     img.png(f'QR/MyQRCode{index}.png', scale=4)
+for index in range(len(QR_collection)):
+    img=QR_collection[index]
+    # img.save(f'QR/MyQRCode{index}.png')
+    img.png(f'QR/MyQRCode{index}.png', scale=4)
     
