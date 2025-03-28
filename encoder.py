@@ -20,11 +20,11 @@ def encode_file(file_path, chunks, red_chunks):
     # Encode using ZFEC
     enc = zfec.Encoder(chunks, chunks + red_chunks)
     return enc.encode(parts)
-    # encoded_parts = enc.encode(parts)
+#     encoded_parts = enc.encode(parts)
 
 #     # Save all N+M parts
 #     for i, part in enumerate(encoded_parts):
-#         with open(os.path.join(output_dir, f"part_{i}.zfec"), "wb") as f:
+#         with open(os.path.join("encoded_parts", f"part_{i}.zfec"), "wb") as f:
 #             f.write(part)
 
 #     print(f"Encoded {file_path} into {chunks + red_chunks} parts. Any {chunks} can reconstruct the original.")

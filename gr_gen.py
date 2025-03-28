@@ -8,7 +8,7 @@ import datetime
 
 input_file = 'test.jpeg'
 
-size = os.path.getsize(input_file)*8
+size = os.path.getsize(input_file)
 # size in bits
 
 req_parts=math.ceil(size/367)
@@ -25,11 +25,12 @@ file_meta_data = {
     "filename": input_file,
     "file_type": os.path.splitext(input_file)[1],
     "file_size": size,
+    "requierd_chunks": req_parts,
     "file_hash": hashlib.md5(open(input_file,'rb').read()).hexdigest(),
     "redundant_chunks": red_chunks,
     "encoder_version": encoder.ver,
     "date_encoded": str(datetime.datetime.now()),
-    "comment": ""
+    "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis purus dictum, efficitur urna ut, fact"
     
 }
 
@@ -54,10 +55,6 @@ for index in range(len(QR_collection)):
 #     QR_collection.append(pyqrcode.create(part, error='L', version=10, mode='binary', encoding='iso-8859-1'))
 #     with open(os.path.join("encoded_parts", f"part_{i}.zfec"), "wb") as f:
 #         f.write(part)
-
-
-
-
 
 
 
